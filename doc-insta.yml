@@ -1,0 +1,16 @@
+-
+ name: playbook for installation docker.io
+ hosts: servers 
+ become: yes 
+ tasks: 
+   - name: install docker
+     apt: 
+        name: docker.io
+        state: latest
+   - name: start and enable docker services
+     service:
+       name: docker
+       state: started
+       enable: true
+     become: true 
+
